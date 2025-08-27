@@ -1,0 +1,238 @@
+@import "./fonts.css";
+@import "filepond/dist/filepond.min.css";
+@import "filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";
+@import "flatpickr/dist/flatpickr.min.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    [x-cloak] {
+        display: none !important;
+    }
+
+    table {
+        @apply w-full text-right divide-y divide-gray-200;
+    }
+    table thead th {
+        @apply p-3 text-sm font-semibold text-gray-500 whitespace-nowrap;
+    }
+    table tbody {
+        @apply bg-white divide-y divide-gray-200/70;
+    }
+    table tbody tr {
+        @apply hover:bg-gray-50;
+    }
+    table tbody tr td {
+        @apply p-3 text-sm text-black whitespace-nowrap;
+    }
+    table tbody tr td.actions {
+        @apply space-x-3 space-x-reverse text-left leading-[0] whitespace-nowrap;
+    }
+    table tbody tr td.actions > .view {
+        @apply inline-flex items-center text-xs font-medium text-primary-600 gap-x-2 hover:underline active:underline focus:outline-none focus:ring-1 focus:ring-primary-600 focus:ring-offset-2;
+    }
+    table tfoot {
+        @apply bg-transparent;
+    }
+    table tfoot td,
+    table tfoot th {
+        @apply p-3 text-xs font-semibold text-gray-500;
+    }
+
+    .btn-confirm-delete {
+        @apply inline-flex items-center px-4 py-2 text-xs font-semibold tracking-wide text-gray-700 uppercase transition duration-150 ease-in-out bg-white border border-gray-400 rounded-sm gap-x-2 hover:bg-gray-100 active:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-blue-700 focus:ring-offset-1 disabled:opacity-50 disabled:hover:bg-white disabled:cursor-not-allowed;
+    }
+}
+.bg-hero {
+    background-image: url('{{ asset("assets/images/hero.jpg") }}');
+}
+
+.pill {
+    @apply inline-flex items-baseline rounded-full py-1.5 px-4 space-x-2 space-x-reverse text-xs font-medium;
+}
+
+.pill span {
+    @apply relative pr-2.5 before:absolute before:content-[''] before:top-[0.35rem] before:-right-1 before:h-1.5 before:w-1.5  before:rounded-full;
+}
+
+.pill-red {
+    @apply text-red-600 bg-red-100;
+}
+.pill-red:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-red-200/70;
+}
+.pill-red span {
+    @apply before:bg-red-500;
+}
+
+.pill-green {
+    @apply text-green-700 bg-green-100;
+}
+.pill-green:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-green-200/70;
+}
+.pill-green span {
+    @apply before:bg-green-600;
+}
+
+
+.pill-gray {
+    @apply text-gray-700 bg-gray-100;
+}
+.pill-gray:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-gray-200/70;
+}
+.pill-gray span {
+    @apply before:bg-gray-600;
+}
+
+
+.pill-lime {
+    @apply text-lime-700 bg-lime-100;
+}
+.pill-lime:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-lime-200/70;
+}
+.pill-lime span {
+    @apply before:bg-lime-600;
+}
+
+.pill-sky {
+    @apply bg-sky-100 text-sky-700;
+}
+.pill-sky:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-sky-200/70;
+}
+.pill-sky span {
+    @apply before:bg-sky-600;
+}
+
+.pill-blue {
+    @apply text-blue-700 bg-blue-100;
+}
+.pill-blue:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-blue-200/70;
+}
+.pill-blue span {
+    @apply before:bg-blue-600;
+}
+
+
+
+.pill-purple {
+    @apply text-purple-700 bg-purple-100;
+}
+.pill-purple:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-purple-200/70;
+}
+.pill-purple span {
+    @apply before:bg-purple-600;
+}
+
+.pill-yellow {
+    @apply text-yellow-700 bg-yellow-100;
+}
+.pill-yellow:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-yellow-200/70;
+}
+.pill-yellow span {
+    @apply before:bg-yellow-600;
+}
+
+.pill-orange {
+    @apply text-orange-700 bg-orange-100;
+}
+.pill-orange:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-orange-200/70;
+}
+.pill-orange span {
+    @apply before:bg-orange-600;
+}
+
+.pill-slate {
+    @apply bg-slate-100 text-slate-700;
+}
+.pill-slate:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-slate-200/70;
+}
+.pill-slate span {
+    @apply before:bg-slate-600;
+}
+
+.pill-teal {
+    @apply text-teal-700 bg-teal-100;
+}
+.pill-teal:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-teal-200/70;
+}
+.pill-teal span {
+    @apply before:bg-teal-600;
+}
+
+.pill-pink {
+    @apply text-pink-700 bg-pink-100;
+}
+.pill-pink:where([class~="cursor-pointer"]) {
+    @apply transition-colors duration-75 ease-in hover:bg-pink-200/70;
+}
+.pill-pink span {
+    @apply before:bg-pink-600;
+}
+
+/* Filepond */
+.filepond--root {
+    font-family: "Alexandria", sans-serif;
+    margin-bottom: 0;
+}
+
+.filepond--panel-root {
+    @apply text-xs border-2 border-gray-200 border-dashed rounded-md bg-gray-50;
+}
+
+.filepond--drop-label label {
+    @apply text-xs;
+}
+.filepond--file-status {
+    @apply gap-2;
+}
+[data-filepond-item-state="idle"] .filepond--item-panel {
+    @apply bg-gray-500;
+}
+
+[data-filepond-item-state="busy processing"] .filepond--item-panel {
+    @apply bg-gray-500;
+}
+
+[data-filepond-item-state="processing"] .filepond--item-panel {
+    @apply bg-gray-500;
+}
+
+[data-filepond-item-state="processing-complete"] .filepond--item-panel {
+    @apply bg-green-700;
+}
+
+.filepond--credits {
+    display: none;
+}
+/* ./Filepond */
+
+/* Flatpickr */
+.flatpickr-months {
+    @apply !py-2;
+}
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+    @apply !relative;
+}
+.flatpickr-current-month {
+    @apply !text-base !p-0 !flex !items-center !justify-center !gap-3;
+}
+.flatpickr-current-month select {
+    @apply !p-0 !text-base !rounded-sm focus:!border-blue-700 focus:!ring-1 focus:!ring-blue-700 focus:!ring-opacity-50;
+}
+.numInput {
+    @apply !px-1 !py-0.5 !text-base !rounded-sm focus:!border-blue-700 focus:!ring-1 focus:!ring-blue-700 focus:!ring-opacity-50;
+}
+/* ./Flatpickr */
