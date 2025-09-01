@@ -11,7 +11,7 @@
                     <div class="grid grid-cols-2 gap-6">
                         <div class="col-span-full sm:col-span-1">
                             <x-inputs.label for="user_name" :value="__('اسم المستخدم')" :has-error="$errors->has('user_name')" required />
-                            <x-inputs.input type="text" id="user_name" name="user_name" class="block w-full" :value="old('user_name')" :has-error="$errors->has('user_name')" required autocomplete="off" />
+                            <x-inputs.input type="text" id="user_name" name="user_name" class="block w-full" :value="old('user_name')" :has-error="$errors->has('user_name')"  autocomplete="off" />
                             <x-inputs.error :messages="$errors->get('user_name')" class="mt-2" />
                         </div>
                         <div class="col-span-full sm:col-span-1">
@@ -24,12 +24,12 @@
                     <div class="grid grid-cols-2 gap-6 mt-6">
                         <div class="col-span-full sm:col-span-1">
                             <x-inputs.label for="full_name" :value="__('اسم الموظف')" :has-error="$errors->has('full_name')" required />
-                            <x-inputs.input type="text" id="full_name" name="full_name" class="block w-full" :value="old('full_name')" :has-error="$errors->has('full_name')" required autocomplete="off" />
+                            <x-inputs.input type="text" id="full_name" name="full_name" class="block w-full" :value="old('full_name')" :has-error="$errors->has('full_name')"  autocomplete="off" />
                             <x-inputs.error :messages="$errors->get('full_name')" class="mt-2" />
                         </div>
                         <div class="col-span-full sm:col-span-1">
                             <x-inputs.label for="scope" :value="__('النطاق')" :has-error="$errors->has('scope')" required />
-                            <x-inputs.select x-model="scope" id="scope" name="scope" class="block w-full" :has-error="$errors->has('scope')" required>
+                            <x-inputs.select x-model="scope" id="scope" name="scope" class="block w-full" :has-error="$errors->has('scope')" >
                                 @foreach ($scopes as $scope)
                                     <option value="{{ $scope->value }}" @selected($scope->value == old('scope'))>{{ $scope->getName() }}</option>
                                 @endforeach
@@ -41,12 +41,12 @@
                     <div class="grid grid-cols-2 gap-6 mt-6">
                         <div class="col-span-full sm:col-span-1">
                             <x-inputs.label for="email" :value="__('البريد الإلكتروني')" :has-error="$errors->has('email')" required />
-                            <x-inputs.input type="email" id="email" name="email" class="block w-full" :value="old('email')" :has-error="$errors->has('email')" required autocomplete="off" required lang="en" />
+                            <x-inputs.input type="email" id="email" name="email" class="block w-full" :value="old('email')" :has-error="$errors->has('email')"  autocomplete="off"  lang="en" />
                             <x-inputs.error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                         <div class="col-span-full sm:col-span-1">
                             <x-inputs.label for="phone" :value="__('رقم الهاتف')" :has-error="$errors->has('phone')" required />
-                            <x-inputs.input type="text" id="phone" name="phone" class="block w-full" :value="old('phone')" :has-error="$errors->has('phone')" required autocomplete="off" />
+                            <x-inputs.input type="text" id="phone" name="phone" class="block w-full" :value="old('phone')" :has-error="$errors->has('phone')"  autocomplete="off" />
                             <x-inputs.error :messages="$errors->get('phone')" class="mt-2" />
                         </div>
                     </div>
@@ -54,13 +54,13 @@
                     <div class="grid grid-cols-2 gap-6 mt-6">
                         <div class="col-span-full sm:col-span-1">
                             <x-inputs.label for="password" :value="__('كلمة المرور')" :has-error="$errors->has('password')" required />
-                            <x-inputs.input type="password" id="password" name="password" class="block w-full" autocomplete="new-password" :has-error="$errors->has('password')" required />
+                            <x-inputs.input type="password" id="password" name="password" class="block w-full" autocomplete="new-password" :has-error="$errors->has('password')"  />
                             <x-inputs.error :messages="$errors->get('password')" class="mt-2" />
                         </div>
 
                         <div class="col-span-full sm:col-span-1">
                             <x-inputs.label for="password_confirmation" :value="__('تأكيد كلمة المرور')" :has-error="$errors->has('password_confirmation')" required />
-                            <x-inputs.input type="password" id="password_confirmation" name="password_confirmation" class="block w-full" autocomplete="new-password" :has-error="$errors->has('password_confirmation')" required />
+                            <x-inputs.input type="password" id="password_confirmation" name="password_confirmation" class="block w-full" autocomplete="new-password" :has-error="$errors->has('password_confirmation')"  />
                             <x-inputs.error :messages="$errors->get('password_confirmation')" class="mt-2" />
                         </div>
                     </div>

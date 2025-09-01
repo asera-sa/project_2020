@@ -234,6 +234,15 @@ return [
         'chamber_of_commerce' => 'الغرفة التجارية',
         'company_bylaws' => 'النظام الأساسي للشركة',
         'payment_receipt' => 'إيصال دفع الرسوم',
+        'email' => 'البريد الإلكتروني',
+        'password' => 'كلمة المرور',
+        'password_confirmation' => 'تأكيد كلمة المرور',
+        'name' => 'الاسم',
+        'full_name' => 'اسم الموظف',
+        'user_name' => 'اسم المستخدم',
+        'scope' => 'النطاق',
+        'phone' => 'رقم الهاتف',
+        'image_profile' => 'صورة الملف الشخصي',
     ],
 
 ];

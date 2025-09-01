@@ -17,7 +17,7 @@
                             </x-nav-link>
                         </li>
                     @endif
-                    
+
                     @if(auth()->user()->isAdministrator())
                         <li>
                             <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
@@ -71,6 +71,14 @@
                         </li>
                     @endif
 
+                    @if(auth()->user()->isAdministrator())
+                        <li>
+                            <x-nav-link :href="route('reports.index')"  :active="request()->routeIs('reports.*')">
+                                <x-heroicon-o-document @class([$svgNavLinkClasses, $svgNavLinkActiveClasses => request()->routeIs('reports.*')]) />
+                                <span>{{ __('تقرير احصائي') }}</span>
+                            </x-nav-link>
+                        </li>
+                    @endif
                     {{-- <li>
                         <x-nav-link :href="'#'" :active="request()->routeIs('admin.reports.*')">
                             <x-heroicon-o-chart-pie @class([$svgNavLinkClasses, $svgNavLinkActiveClasses => request()->routeIs('admin.reports.*')]) />

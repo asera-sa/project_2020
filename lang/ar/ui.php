@@ -14,6 +14,7 @@ return [
         'specialty' => 'التخصص',
         'message' => 'المراسلة',
         'subscription' => 'قائمة اشتراك',
+        'license_requests' => 'طلب الترخيص',
 
     ],
 

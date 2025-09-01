@@ -21,7 +21,7 @@
                                     @forelse ($users as $user)
                                         <tr>
                                             <td class="font-mono">{{ $loop->iteration }}</td>
-                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->user_name }}</td>
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->scope->getName() }}</td>
                                             <td>

@@ -15,31 +15,31 @@ use App\Http\Requests\License\StoreRequest;
 class LicenseRequestController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware(function ($request, $next) {
-            $user = auth()->user();
-            $method = $request->route()->getActionMethod();
+    // public function __construct()
+    // {
+    //     $this->middleware(function ($request, $next) {
+    //         $user = auth()->user();
+    //         $method = $request->route()->getActionMethod();
 
-            // المدير يقدر يدخل لأي دالة
-            if ($user->isAdministrator()) {
-                return $next($request);
-            }
+    //         // المدير يقدر يدخل لأي دالة
+    //         if ($user->isAdministrator()) {
+    //             return $next($request);
+    //         }
 
-            // مدير مكتب التفتيش يشوف  index و show
-            if (
-                $user->isInspectionOfficeManager() &&
-                in_array($method, ['index', 'show'])
-            ) {
-                return $next($request);
-            }
-            if ($user->isInstitutionOwner() || $user->isSettlementUnitEmployee()) {
-                return $next($request);
-            }
-            // باقي الحالات: منع
-            abort(403);
-        });
-    }
+    //         // مدير مكتب التفتيش يشوف  index و show
+    //         if (
+    //             $user->isInspectionOfficeManager() &&
+    //             in_array($method, ['index', 'show'])
+    //         ) {
+    //             return $next($request);
+    //         }
+    //         if ($user->isInstitutionOwner() || $user->isSettlementUnitEmployee()) {
+    //             return $next($request);
+    //         }
+    //         // باقي الحالات: منع
+    //         abort(403);
+    //     });
+    // }
 
     public function index()
     {
@@ -125,6 +125,7 @@ class LicenseRequestController extends Controller
                 $licenseRequest->addMediaFromRequest($field)->toMediaCollection($field);
             }
         }
+        flash()->success(__('ui.alerts.messages.create',   ['entity' => __('ui.entities.license_requests'), 'name' => $licenseRequest->name]));
 
         return redirect()->route('license_requests.index')
             ->with('success', __('تم إضافة طلب الترخيص بنجاح.'));

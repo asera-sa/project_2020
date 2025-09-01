@@ -3,6 +3,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\LicenseController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -98,6 +99,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('licenses/{license}/edit', [LicenseController::class, 'edit'])->name('licenses.edit');
     Route::put('licenses/{license}', [LicenseController::class, 'update'])->name('licenses.update');
     Route::delete('licenses/{license}', [LicenseController::class, 'destroy'])->name('licenses.destroy');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('reports', [ReportController::class, 'index'])->name('reports.index');
+    Route::get('/admin/reports/license-requests/pdf', [ReportController::class, 'exportPdf'])
+        ->name('admin.reports.license_requests.pdf');
+
 });
 
 

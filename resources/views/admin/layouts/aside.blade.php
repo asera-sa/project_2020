@@ -41,7 +41,7 @@
                         </div>
                 <div class="flex justify-between flex-1 gap-x-4 lg:justify-end lg:gap-x-6">
                     <div class="block lg:hidden">
-                        <x-dashboard-logo side="قسم التدريب" />
+                        <x-dashboard-logo side="" />
                     </div>
 
                     <div class="flex items-center gap-x-4 lg:gap-x-6">
