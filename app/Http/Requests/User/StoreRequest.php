@@ -22,7 +22,7 @@ class StoreRequest extends FormRequest
             'image_profile' => ['nullable', 'file', 'image', 'mimes:jpeg,jpg,png,gif'],
             'full_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone' => ['required', 'string', 'max:255'],
+            'phone' => ['required','string','regex:/^0(9[1-6]\d{7})$/'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'scope' => ['required', new Enum(UserScope::class)],
             // 'last_login' => ['required', 'string', 'max:255'],

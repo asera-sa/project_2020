@@ -103,6 +103,7 @@ class UserController extends Controller
             flash()->error(__('لا يمكن حذف المستخدم غير الإداري.'));
             return redirect()->route('admin.users.show',$user);
         }
+        
         $user->delete();
 
         flash()->success(__('ui.alerts.messages.delete', ['entity' => __('ui.entities.user'), 'name' => $user->name]));

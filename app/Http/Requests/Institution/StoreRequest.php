@@ -20,7 +20,7 @@ class StoreRequest extends FormRequest
                 'user_name' => ['required', 'string', 'max:255','unique:users','regex:/^(?=.*[a-zA-Z])[a-zA-Z0-9._-]+$/'],
                 'image_profile' => ['nullable', 'file', 'image', 'mimes:jpeg,jpg,png,gif'],
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'phone' => ['required', 'string', 'max:255'],
+                'phone' => ['required','string','regex:/^0(9[1-6]\d{7})$/'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
 
                 #............................................................................................
@@ -29,8 +29,6 @@ class StoreRequest extends FormRequest
                 'type' => 'required|in:public,private',
 
             ];
-
-           
 
     return $rules;
 }
