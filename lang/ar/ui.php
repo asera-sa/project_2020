@@ -15,6 +15,7 @@ return [
         'message' => 'المراسلة',
         'subscription' => 'قائمة اشتراك',
         'license_requests' => 'طلب الترخيص',
+        'license' => 'الرخصة',
 
     ],
 

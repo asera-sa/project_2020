@@ -22,7 +22,7 @@ class LicenseController extends Controller
             if (auth()->user()?->isAdministrator() || auth()->user()?->isInspectionOfficeManager()) {
                 return $next($request);
             }
-            
+
             abort(403);
         });
     }
@@ -38,12 +38,12 @@ class LicenseController extends Controller
                 }),
             ])
             ->paginate(config('app.paginate_count'));
-    
+
         return view('admin.pages.licenses.index', [
             'licenses' => $licenses
         ]);
     }
-    
+
 
     public function create(LicenseRequest $licenseRequest)
     {
@@ -68,7 +68,7 @@ class LicenseController extends Controller
 
         $licenseRequest->state->transitionTo(Completed::class);
         $licenseRequest->save();
-        flash()->success(__('ui.alerts.messages.create', ['entity' => __('ui.entities.bank'), 'name' => $license->name]));
+        flash()->success(__('ui.alerts.messages.create', ['entity' => __('ui.entities.license'), 'name' => $license->name]));
 
         // إعادة التوجيه مع رسالة نجاح
         return redirect()->route('licenses.index')->with('success', 'تم إضافة طلب الترخيص بنجاح.');

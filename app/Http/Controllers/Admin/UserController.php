@@ -99,7 +99,7 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        if($user->scope != 'administrator'){
+        if($user->scope == 'administrator'){
             flash()->error(__('لا يمكن حذف المستخدم غير الإداري.'));
             return redirect()->route('admin.users.show',$user);
         }

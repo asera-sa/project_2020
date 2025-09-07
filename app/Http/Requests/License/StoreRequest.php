@@ -16,10 +16,11 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'license_request_id' => ['nullable', 'exists:license_requests,id'],
-            'issued_at' => ['nullable', 'date'],
+            'license_request_id' => ['required', 'exists:license_requests,id'],
+            'issued_at' => ['required', 'date'],
             'expires_at' => ['nullable', 'date', 'after_or_equal:issued_at'],
             'notes' => ['nullable', 'string'],
+            'license' => ['required', 'file', 'mimes:pdf,jpg,jpeg,png'], // الملف إجباري
         ];
     }
 
@@ -31,7 +32,6 @@ class StoreRequest extends FormRequest
             ]);
         }
     }
-
 
     public function messages()
     {

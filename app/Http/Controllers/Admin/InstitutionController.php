@@ -7,6 +7,7 @@ use App\Models\Institution;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Requests\Institution\StoreRequest;
 use App\Http\Requests\Institution\UpdateRequest;
 
@@ -46,7 +47,7 @@ class InstitutionController extends Controller
         // إنشاء الجهة
         $userData = $request->validated();
         $userData = array_merge($userData, [
-            'password' => bcrypt($request->password), 
+            'password' => bcrypt($request->password),
             'last_login' => now(),
             'status' => 'inactive', // الحساب غير مفعل
             'scope' => 'institution_owner', // تحديد نوع المستخدم
@@ -64,11 +65,9 @@ class InstitutionController extends Controller
 
         $institution = Institution::create($institutionData);
 
-        // إرسال رسالة التأكيد
-        $user->notify(new \App\Notifications\InstitutionEmailVerification(
-            $user->email_verification_token, 
-            $user->full_name
-        ));
+         event(new Registered($user)); // هذا يرسل رابط التحقق
+
+
 
         return redirect()->route('admin.institutions.show',$institution)->with('success', 'تمت إضافة الجهة بنجاح. تم إرسال رسالة التأكيد إلى البريد الإلكتروني. الحساب يحتاج تأكيد البريد الإلكتروني أولاً ثم تفعيل من قبل الإدارة. لا يمكن للمؤسسة تسجيل الدخول حتى يتم تفعيل الحساب.');
     }
