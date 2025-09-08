@@ -119,7 +119,13 @@ Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $requ
 
     if (auth()->user()->scope->value === 'institution_owner') {
         return redirect()->route('license_requests.index'); // صفحة المؤسسات
-    } else {
+    }else if (auth()->user()->scope->value === 'settlement_unit_employee') {
+        return redirect()->route('license_requests.index'); // صفحة طلبات الرخص
+    } else if (auth()->user()->scope->value === 'inspection_office_manager') {
+        return redirect()->route('license_requests.index'); // صفحة طلبات الرخص
+    } else if (auth()->user()->scope->value === 'inspector') {
+        return redirect()->route('visit_schedules.index'); // صفحة جدول الزيارات
+    }else {
         return redirect()->route('admin.dashboard'); // صفحة المستخدم العادي
     }
 
