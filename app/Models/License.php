@@ -28,5 +28,9 @@ class License extends Model implements HasMedia
         return $this->belongsTo(LicenseRequest::class);
     }
 
-    
+    public function institution()
+    {
+        return $this->belongsTo(Institution::class);
+    }
+
 }
