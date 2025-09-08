@@ -117,5 +117,11 @@ Route::post('/email/verification-notification', function (Request $request) {
 Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
     $request->fulfill();
 
+    if (auth()->user()->scope->value === 'institution_owner') {
+        return redirect()->route('license_requests.index'); // صفحة المؤسسات
+    } else {
+        return redirect()->route('admin.dashboard'); // صفحة المستخدم العادي
+    }
+
     return redirect()->route('admin.dashboard');
 })->middleware(['auth', 'signed'])->name('verification.verify');

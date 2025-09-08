@@ -40,11 +40,6 @@ class InstitutionEmailVerification extends Notification
     {
         $verificationUrl = route('email.verification.verify', $this->token);
 
-        if ($notifiable->scope === 'institution_owner') {
-                $verificationUrl .= '?redirect=' . route('admin.dashboard'); // صفحة المستخدم العادي
-            } else {
-                $verificationUrl .= '?redirect=' . route('admin.license_requests.index'); // صفحة المؤسسات
-            }
         return (new MailMessage)
             ->subject('تأكيد حساب المؤسسة')
             ->greeting('مرحباً ' . $this->userName)

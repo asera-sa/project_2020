@@ -15,7 +15,6 @@ return Application::configure(basePath: dirname(__DIR__))
             'auth' => \App\Http\Middleware\Authenticate::class,
             'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
             'account.status' => \App\Http\Middleware\CheckAccountStatus::class,
-            'login.status' => \App\Http\Middleware\CheckLoginStatus::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
