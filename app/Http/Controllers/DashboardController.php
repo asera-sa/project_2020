@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
@@ -15,16 +15,16 @@ use App\Models\Institution;
 
 class DashboardController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware(function ($request, $next) {
-    //         if (!auth()->user()?->isAdministrator()) {
-    //             abort(403);
-    //         }
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            if (!auth()->user()?->isAdministrator()) {
+                abort(403);
+            }
 
-    //         return $next($request);
-    //     });
-    // }
+            return $next($request);
+        });
+    }
 
     public function index(Request $request)
     {

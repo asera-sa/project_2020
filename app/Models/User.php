@@ -27,7 +27,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'password',
         'scope',
         'last_login',
-        'status',
         'email_verification_token',
         'email_verification_token_expires_at',
     ];
@@ -41,7 +40,6 @@ class User extends Authenticatable implements HasMedia, MustVerifyEmail
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'scope' => UserScope::class,
-        'state' => ModelState::class,
     ];
 
     public function getImage(): string

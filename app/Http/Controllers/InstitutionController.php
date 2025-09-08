@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 use App\Models\User;
 
 use App\Models\Institution;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\QueryBuilder\QueryBuilder;
 use Illuminate\Auth\Events\Registered;
@@ -49,7 +48,7 @@ class InstitutionController extends Controller
         $userData = array_merge($userData, [
             'password' => bcrypt($request->password),
             'last_login' => now(),
-            'status' => 'inactive', // الحساب غير مفعل
+            // 'status' => 'inactive', // الحساب غير مفعل
             'scope' => 'institution_owner', // تحديد نوع المستخدم
             'email_verification_token' => \Illuminate\Support\Str::random(64),
             'email_verification_token_expires_at' => now()->addHours(24),

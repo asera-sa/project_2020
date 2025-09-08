@@ -8,10 +8,15 @@
                             <div class="flex items-center gap-x-3">
                                 <h2 class="text-sm font-semibold">{{ __('عرض بيانات المستخدم ') }}</h2>
                             </div>
-                        
-                            <div @class([$user->state->getUiClasses() ?? ''])>
-                                <span>{{ $user->state->getName() ?? $user->state }}</span>
-                            </div>
+                            @if ($user->email_verified_at)
+                                <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">
+                                    {{ __('مفعل') }}
+                                </span>
+                            @else
+                                <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-100 rounded-full">
+                                    {{ __('غير مفعل') }}
+                                </span>
+                            @endif
                         </div>
                     </x-slot>
                     <x-slot name="slot">

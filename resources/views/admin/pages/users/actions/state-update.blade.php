@@ -20,37 +20,29 @@
             {{-- الحالة الحالية --}}
             <div class="flex items-center pb-4 border-b gap-x-4">
                 <span class="text-sm font-medium text-gray-600">{{ __('الحالة الحالية') }}:</span>
-                <div @class([$user->state->getUiClasses()])>
-                    <span>{{ $user->state->getName() }}</span>
-                </div>
+                @if ($user->email_verified_at)
+                    <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">
+                        {{ __('مفعل') }}
+                    </span>
+                @else
+                    <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-100 rounded-full">
+                        {{ __('غير مفعل') }}
+                    </span>
+                @endif
             </div>
 
             {{-- اختيار الحالة الجديدة --}}
             <div>
-                <x-inputs.label for="state" :value="__('تغيير إلى ؟')" :has-error="$errors->has('state')" required />
-                <x-inputs.select  placeholder="اختر" id="state" name="state" class="block w-full" :has-error="$errors->has('state')">
-                    @foreach ($user->state->transitionableStates() as $availableState)
-                        <option value="{{ $availableState }}">{{ __('app.states.user.actions.'.$availableState) }}</option>
-                    @endforeach
+                <x-inputs.label for="state" :value="__('تغيير إلى ؟')" required />
+                <x-inputs.select id="state" name="state" class="block w-full">
+                    <option value="active" {{ $user->email_verified_at ? 'selected' : '' }}>
+                        {{ __('مفعل') }}
+                    </option>
+                    <option value="inactive" {{ !$user->email_verified_at ? 'selected' : '' }}>
+                        {{ __('غير مفعل') }}
+                    </option>
                 </x-inputs.select>
-                <x-inputs.error :messages="$errors->get('state')" />
             </div>
-
-            {{-- تفعيل الحساب للمؤسسات --}}
-            @if($user->scope === 'institution_owner')
-                <div class="pt-4 border-t">
-                    <x-inputs.label for="status" :value="__('حالة الحساب')" :has-error="$errors->has('status')" />
-                    <x-inputs.select placeholder="اختر" id="status" name="status" class="block w-full" :has-error="$errors->has('status')">
-                        <option value="inactive" {{ $user->status === 'inactive' ? 'selected' : '' }}>غير مفعل</option>
-                        <option value="active" {{ $user->status === 'active' ? 'selected' : '' }}>مفعل</option>
-                    </x-inputs.select>
-                    <x-inputs.error :messages="$errors->get('status')" />
-                    <p class="mt-1 text-xs text-gray-500">
-                        يمكن تفعيل الحساب بعد تأكيد البريد الإلكتروني من قبل المستخدم. الحساب غير المفعل لا يمكنه تسجيل الدخول للنظام.
-                    </p>
-                </div>
-            @endif
-
 
             {{-- أزرار الإجراء --}}
             <div class="flex items-center justify-end gap-4 pt-4">

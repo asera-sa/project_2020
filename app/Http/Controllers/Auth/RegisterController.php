@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Auth;
+namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Models\Institution;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
-use Illuminate\Validation\Rules\Password;
 use App\Http\Requests\Institution\StoreRequest;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,7 +27,7 @@ class RegisterController extends Controller
 
         $validatedData = $request->safe()->merge(['user_id' => $user->id])->toArray();
 
-        $institution = Institution::create($validatedData);
+        Institution::create($validatedData);
 
         event(new Registered($user)); // هذا يرسل رابط التحقق
 

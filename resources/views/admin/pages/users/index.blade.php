@@ -25,9 +25,15 @@
                                             <td>{{ $user->email }}</td>
                                             <td>{{ $user->scope->getName() }}</td>
                                             <td>
-                                                <div @class([$user->state->getUiClasses()])>
-                                                    {{ $user->state->getName() }}
-                                                </div>
+                                                @if ($user->email_verified_at)
+                                                    <span class="px-2 py-1 text-xs font-semibold text-green-800 bg-green-100 rounded-full">
+                                                        {{ __('مفعل') }}
+                                                    </span>
+                                                @else
+                                                    <span class="px-2 py-1 text-xs font-semibold text-red-800 bg-red-100 rounded-full">
+                                                        {{ __('غير مفعل') }}
+                                                    </span>
+                                                @endif
                                             </td>
                                             <td class="actions">
                                                 <a href="{{ route('admin.users.show', $user) }}" class="view">

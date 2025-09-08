@@ -18,12 +18,10 @@ return new class extends Migration
             $table->string('full_name')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('status')->default('inactive');
             $table->string('phone');
             $table->string('password');
-            $table->string('scope')->default('institution_owner');           
+            $table->string('scope')->default('institution_owner');
             $table->datetime('last_login');
-            $table->string('state');
             $table->rememberToken();
             $table->timestamps();
         });
